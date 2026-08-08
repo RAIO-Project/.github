@@ -4,32 +4,29 @@
 
 ### Backend Engineering × AI × Scalable Architecture
 
-**기술을 사용하는 것에 그치지 않고,  
-직접 설계하고 구축하며 함께 성장합니다.**
+일반적인 Backend Engineering을 기반으로  
+**AI를 개발과 서비스에 활용하며 함께 성장하는 개발팀입니다.**
 
 </div>
 
 <br/>
 
-> ### 👋 우리는 이런 팀입니다.
+> ### 👋 About Us
 >
-> 일반적인 **Backend Engineering**을 기반으로  
-> **AI를 개발 과정과 서비스에 활용하고 구축하며 팀의 성장을 만들어가는 개발팀**입니다.
+> RAIO는 단순히 기능을 구현하는 것보다  
+> **왜 이렇게 설계하는지 고민하고, 그 경험을 팀의 기술로 축적하는 것**을 중요하게 생각합니다.
 
 <br/>
 
 <table>
 <tr>
-<td width="12%" align="center">
-
-### 🚀
-
+<td width="8%" align="center">
+🚀
 </td>
-<td width="88%">
+<td width="92%">
 
-### 기술을 따라가는 팀보다, 기술을 이해하고 선택할 수 있는 팀을 지향합니다.
-
-*We build, learn, and scale together.*
+<b>기술을 따라가기보다, 이해하고 선택할 수 있는 팀을 지향합니다.</b><br/>
+<sub><i>Build together · Learn together · Scale together</i></sub>
 
 </td>
 </tr>
@@ -38,35 +35,31 @@
 <br/>
 
 <details>
-<summary><b>👀 RAIO가 추구하는 Engineering Culture</b></summary>
+<summary><b>👀 RAIO가 지향하는 Engineering Culture</b></summary>
 
 <br/>
 
-우리는 단순히 기능을 빠르게 구현하는 것만을 목표로 하지 않습니다.
+우리는 새로운 기술을 단순히 적용하는 것보다  
+**왜 필요한지 이해하고, 현재 문제에 적합한 기술을 선택하는 과정**을 중요하게 생각합니다.
 
-**왜 이 기술을 사용하는지, 왜 이런 구조를 선택했는지**를 함께 고민하고  
-그 과정에서 얻은 경험을 팀의 기술 자산으로 축적합니다.
-
-- 새로운 기술을 직접 사용하고 검증합니다.
-- AI를 개발 생산성과 서비스에 적극적으로 활용합니다.
+- Backend Engineering을 중심으로 탄탄한 기반을 만듭니다.
+- AI를 개발 생산성과 실제 서비스에 적극적으로 활용합니다.
 - 기술 선택의 이유를 설명할 수 있는 엔지니어링을 지향합니다.
 - 개인의 경험을 팀의 기술 자산으로 축적합니다.
-- 서비스의 성장뿐 아니라 개발자의 성장을 중요하게 생각합니다.
+- 서비스의 성장과 함께 개발자의 성장도 중요하게 생각합니다.
 
 </details>
 
 ---
 
-# 🏗️ Architecture
+# 🏗️ Architecture Direction
 
-> ### Architecture should grow with the Service and the Team.
->
-> **서비스와 팀의 성장에 따라 함께 성장할 수 있는 아키텍처를 설계합니다.**
+> **Architecture should grow with the Service and the Team.**
 
-RAIO는 처음부터 복잡한 MSA를 구성하지 않습니다.
+RAIO는 처음부터 복잡한 Microservice Architecture를 구성하지 않습니다.
 
 초기에는 **Monolith / Monorepo**의 생산성을 활용하면서  
-각 비즈니스의 **Domain Boundary**를 명확하게 유지합니다.
+각 비즈니스의 **Domain Boundary를 명확하게 유지**합니다.
 
 <br/>
 
@@ -80,30 +73,28 @@ RAIO는 처음부터 복잡한 MSA를 구성하지 않습니다.
 
 <table>
 <tr>
-<td width="12%" align="center">
-
-### 🧩
-
+<td width="8%" align="center">
+🧩
 </td>
-<td width="88%">
+<td width="92%">
 
-### 처음부터 분리하지 않습니다.
-
-현재 규모에 가장 적합한 구조에서 시작하고,  
-**필요한 순간에 분리할 수 있는 경계**를 먼저 설계합니다.
+<b>처음부터 분리하지 않습니다.</b><br/>
+<sub>현재 규모에 적합한 구조에서 시작하고, 필요한 순간에 분리할 수 있는 경계를 설계합니다.</sub>
 
 </td>
 </tr>
 </table>
+
+<br/>
 
 <details>
 <summary><b>🏛️ Architecture Direction 자세히 보기</b></summary>
 
 <br/>
 
-### Domain First
+## Domain First
 
-Layer보다 **Domain을 중심으로 관련 코드를 응집**시키고  
+RAIO는 Layer보다 **Domain을 중심으로 관련 코드를 응집**시키고,  
 각 Domain 내부에서 Hexagonal Architecture를 유지합니다.
 
 ```text
@@ -129,9 +120,11 @@ payment-service
 
 `High Cohesion` · `Low Coupling` · `Clear Boundary` · `Easy Extraction`
 
-### Business & Runtime Separation
+---
 
-비즈니스 기능과 실행 환경을 서로 다른 관심사로 바라봅니다.
+## Business & Runtime Separation
+
+비즈니스 기능과 실행 환경(Runtime)을 서로 다른 관심사로 바라봅니다.
 
 ```text
         Business Capability
@@ -143,21 +136,31 @@ Payment · Wallet · Settlement · Stream
 ──────────────────────────────────
                  ▲
                  │
-    Online · Batch · Consumer
+      Online · Batch · Consumer
 
-               Runtime
+                Runtime
 ```
 
-**Domain은 무엇을 수행할지 정의하고,  
-Runtime은 어떻게 실행할지를 결정합니다.**
+Domain은 **무엇을 수행하는지**를 정의하고,  
+Runtime은 **어떻게 실행할지**를 결정합니다.
 
-### Growing Architecture
+따라서 동일한 Application / Domain을  
+Online Server, Batch Server, Consumer Server 등 다양한 실행 환경에서 재사용할 수 있습니다.
+
+---
+
+## Growing Architecture
+
+RAIO는 서비스와 조직의 성장에 따라 경계를 점진적으로 확장합니다.
 
 ```text
 Monolith / Monorepo
         │
         ▼
   Domain Boundary
+        │
+        ▼
+      Package
         │
         ▼
       Module
@@ -175,12 +178,10 @@ Monolith / Monorepo
  Independent Team
 ```
 
-서비스와 조직의 규모가 성장하면  
-Package → Module → Runtime → Service → Repository 단위로 점진적으로 분리합니다.
+처음부터 시스템을 분산시키는 것이 아니라,  
+**필요할 때 분리할 수 있는 구조를 만드는 것**을 목표로 합니다.
 
 </details>
-
-<br/>
 
 ---
 
@@ -192,79 +193,84 @@ Package → Module → Runtime → Service → Repository 단위로 점진적으
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="100%" valign="top">
 
-## 📡 RAIO Streaming
+### 📡 RAIO Streaming
 
-### Social Live Streaming Platform
+**Social Live Streaming Platform**
 
-시청자와 스트리머가 **실시간 방송, 채팅, 후원**을 통해  
-상호작용하는 Social Streaming Platform입니다.
-
-<br/>
-
-**💡 Core**
-
-`Streaming` `Chat` `Donation`  
-`Payment` `Wallet` `Settlement`
+실시간 방송을 중심으로 시청자와 스트리머가  
+**Streaming · Chat · Donation**을 통해 상호작용하는 소셜 스트리밍 플랫폼입니다.
 
 <br/>
 
-**⚙️ Backend**
+<table>
+<tr>
 
-`Java 21` `Spring Boot 3`  
-`JPA` `QueryDSL` `Spring Batch`
+<td width="25%" valign="top">
 
-<br/>
-
-**🗄️ Data**
-
-`PostgreSQL` `Redis` `Flyway`
+<b>🧩 Core Domain</b>
 
 <br/>
 
-**🔌 Communication**
-
-`REST` `gRPC`
-
-<br/>
-
-**☁️ Infrastructure**
-
-`Docker` `Railway` `GitHub Actions`  
-`Prometheus` `Grafana`
-
-<br/>
-
-### → [Explore Backend Repository](https://github.com/RAIO-Project/raio-backend)
+`User`  
+`Stream`  
+`Chat`  
+`Donation`  
+`Payment`  
+`Wallet`  
+`Settlement`
 
 </td>
 
-<td width="50%" valign="top">
+<td width="25%" valign="top">
 
-## 🤖 AI Project
-
-### AI × Backend Engineering
-
-AI를 단순한 개발 도구를 넘어  
-**실제 서비스의 구성 요소로 활용하는 방법을 탐구합니다.**
+<b>⚙️ Backend</b>
 
 <br/>
 
-**💡 Focus**
+`Java 21`  
+`Spring Boot 3`  
+`JPA`  
+`QueryDSL`  
+`Spring Batch`
 
-`AI` `Backend`  
-`Automation` `Productivity`
+</td>
+
+<td width="25%" valign="top">
+
+<b>🗄️ Data & Communication</b>
 
 <br/>
 
-**🧪 Status**
+`PostgreSQL`  
+`Redis`  
+`Flyway`  
+`REST`  
+`gRPC`
 
-새로운 프로젝트를 준비하고 있습니다.
+</td>
 
-<br/><br/><br/><br/><br/><br/>
+<td width="25%" valign="top">
 
-### → Coming Soon
+<b>☁️ Infrastructure</b>
+
+<br/>
+
+`Docker`  
+`Railway`  
+`GitHub Actions`  
+`Prometheus`  
+`Grafana`
+
+</td>
+
+</tr>
+</table>
+
+<br/>
+
+### → [Explore RAIO Backend](https://github.com/RAIO-Project/raio-backend)
 
 </td>
 </tr>
@@ -303,54 +309,208 @@ flowchart LR
     Streamer --> Settlement
 ```
 
-### Core Domains
+RAIO에서 시청자는 방송을 시청하며 실시간 채팅에 참여하고,  
+포인트를 충전해 스트리머에게 후원할 수 있습니다.
+
+후원으로 발생한 스트리머의 수익은  
+정산 과정을 통해 집계되고 정산 대상 금액으로 확정됩니다.
+
+---
+
+## 🧩 Core Domains
 
 | Domain | Responsibility |
 |---|---|
-| 👤 **User** | 회원 및 사용자 정보 |
-| 📺 **Stream** | 방송 및 스트리밍 상태 |
-| 💬 **Chat** | 실시간 채팅 |
+| 👤 **User** | 회원, 인증 및 사용자 정보 관리 |
+| 📺 **Stream** | 방송 생성 및 스트리밍 상태 관리 |
+| 💬 **Chat** | 실시간 채팅 및 방송 상호작용 |
 | 🎁 **Donation** | 시청자와 스트리머 간 후원 |
 | 💳 **Payment** | 결제 및 포인트 충전 |
-| 👛 **Wallet** | 포인트 잔액 및 거래 이력 |
+| 👛 **Wallet** | 사용자 포인트 잔액 및 거래 이력 |
 | 💰 **Settlement** | 스트리머 수익 집계 및 정산 |
 
-### 💰 Payment → Donation → Settlement
+각 도메인은 자신의 비즈니스 책임을 가지며  
+다른 도메인의 내부 구현에 직접 의존하지 않는 것을 지향합니다.
+
+---
+
+## 💰 Payment → Donation → Settlement
+
+RAIO에서는 **Payment와 Settlement를 서로 다른 비즈니스 영역**으로 바라봅니다.
 
 ```text
+Payment ≠ Settlement
+```
+
+### Payment
+
+사용자가 플랫폼에 돈을 지불하고 포인트를 충전하는 과정입니다.
+
+```text
+Viewer
+   │
+   ▼
 Payment
    │
    ▼
 Wallet
-   │
-   ▼
-Donation
-   │
-   ▼
-Streamer Revenue
-   │
-   ▼
-Settlement
 ```
 
-RAIO에서는 **Payment와 Settlement를 서로 다른 비즈니스 영역**으로 바라봅니다.
+### Donation
 
-> **Payment**  
-> 사용자가 플랫폼에 돈을 지불하는 과정
->
-> **Settlement**  
-> 플랫폼이 스트리머에게 지급해야 할 금액을 계산하는 과정
+사용자가 보유한 포인트를 사용하여 스트리머에게 후원합니다.
 
-실제 송금은 Settlement의 책임에서 제외하며,  
-향후 필요한 경우 별도의 **Payout / Transfer Domain**으로 확장할 수 있도록 설계합니다.
+```text
+Viewer Wallet
+      │
+      ▼
+   Donation
+      │
+      ▼
+Streamer Revenue
+```
+
+### Settlement
+
+후원 등을 통해 발생한 스트리머 수익을 집계하고  
+플랫폼 수수료 정책을 적용하여 최종 정산 대상 금액을 계산합니다.
+
+```text
+Streamer Revenue
+       │
+       ▼
+ Gross Amount
+       │
+       ▼
+  Fee Policy
+       │
+       ▼
+ Platform Fee
+       │
+       ▼
+Net Settlement Amount
+```
+
+정산과 실제 지급은 분리합니다.
+
+```text
+Donation
+    │
+    ▼
+Settlement
+    │
+    ▼
+Payout / Transfer
+```
+
+현재 RAIO에서는 Settlement까지를 정산 도메인의 책임으로 정의하고,  
+실제 송금이 필요한 시점에는 별도의 `Payout / Transfer` 영역으로 확장할 수 있도록 설계합니다.
+
+---
+
+## ⚙️ Batch Architecture
+
+RAIO에서는 Batch 자체에 비즈니스 로직을 넣지 않습니다.
+
+```text
+Batch Server
+     │
+     ▼
+Batch Adapter
+     │
+     ▼
+UseCase
+     │
+     ▼
+Application
+     │
+     ▼
+Domain
+```
+
+예를 들어 정산 Batch는 정산 로직을 직접 구현하지 않고  
+Settlement Application의 UseCase를 호출합니다.
+
+```text
+Settlement Job
+      │
+      ▼
+SettlementCalculateUseCase
+      │
+      ▼
+Settlement Application
+      │
+      ▼
+Settlement Domain
+```
+
+> **Spring Batch를 사용하는 것이 목적이 아니라,  
+> 도메인 개발자가 비즈니스에 집중할 수 있도록 Batch 실행 환경을 추상화하는 것을 목표로 합니다.**
+
+---
+
+## 🔌 Inter-Service Communication
+
+서비스 간 통신에서도 Domain과 Application이  
+특정 통신 기술에 직접 의존하지 않도록 설계합니다.
+
+```text
+Application
+     │
+     ▼
+    Port
+     │
+     ▼
+gRPC Adapter
+     │
+     ▼
+   gRPC
+     │
+     ▼
+Server Adapter
+     │
+     ▼
+Application
+```
+
+현재 서비스 간 동기 통신에는 `gRPC`를 활용하며,  
+향후 비동기 처리가 필요한 영역은 Event 기반 통신으로 확장할 수 있도록 고려합니다.
 
 </details>
 
 ---
 
+# 🛠️ Technology
+
 <div align="center">
 
-### ⚡ RAIO Project
+### Backend
+
+`Java 21` · `Spring Boot 3` · `Spring Batch` · `JPA` · `QueryDSL`
+
+### Data
+
+`PostgreSQL` · `Redis` · `Flyway`
+
+### Communication
+
+`REST API` · `gRPC`
+
+### Infrastructure
+
+`Docker` · `Railway` · `GitHub Actions`
+
+### Observability
+
+`Prometheus` · `Grafana`
+
+</div>
+
+---
+
+<div align="center">
+
+## ⚡ RAIO Project
 
 **Build together · Learn together · Scale together**
 
